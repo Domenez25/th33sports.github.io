@@ -1,0 +1,29 @@
+        
+        table {
+            border-collapse: collapse;
+            border-radius: 1em;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1em;
+            border-bottom: 2px solid white; 
+        }
+        thead {
+            color: white;
+            background-color: #5165ff;
+        }
+        tbody { 
+            background-color: #eee;
+        }
+        tbody td {
+            padding-right: 2em;
+        }
+
+        p {
+            padding: 1em;
+        }
+
+        h2 {
+            padding: 0em 0em 1em 2em;
+        }

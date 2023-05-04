@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+
+      <style type="text/css">
+
+          .box {
+            border: none;
+            outline: none;
+            border-radius: 15px;
+            padding: 1em;
+            background-color: rgb(220, 243, 255);
+            box-shadow: inset 2px 5px 10px rgba(0, 77, 141, 0.2);
+            transition: 300ms ease-in-out;
+            }
+          
+          .box:focus {
+              background-color: white;
+              transform: scale(1.05);
+              box-shadow: 3px 3 130px #969696,
+                        -13 -13 130px #ffffff;
+            }
+
+            #login-button {
+              margin: 10px;
+                font-size: 17px;
+                padding: 0.5em 2em;
+                border: transparent;
+                box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+                background: dodgerblue;
+                color: white;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            #login-button:hover {
+                background: rgb(2,0,36);
+                background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+            }
+
+            #login-button:active {
+                transform: translate(0em, 0.2em);
+            }
+
+
+            #content {
+                width: auto;
+                height: 450px;
+                border-radius: 50px;
+                background-image: linear-gradient(to right, #5165ff, #00AAFF);
+                box-shadow: 20px 20px 60px #bebebe,
+               -20px -20px 60px #ffffff;
+            }
+
+            h1, #message {
+              padding-top: 10px; 
+              color: white; 
+              font-family: sans-serif; 
+              font-weight: bold;
+            }
+            
+            
+      </style>
+
+</head>
+<body align="center">
+    
+    <div id="content">
+    <h1>sign in to<br> your account!</h1>
+    
+    <form action="" method="post">
+
+				<div class="inputs">
+					<input class="box" type="text" id="username" name="username" placeholder="enter Usernam"></div><br>
+				<div class="inputs">
+					<input class="box" type="password" id="password" name="passwrod" placeholder="type your password"></div><br>
+
+      <input  type="submit" value="Login" id="login-button">
+    </form>
+
+    <div id="message"><br></div>
+    <br>
+  </div>
+
+    
+    <script src="accounts.js"></script>  
+    <script>
+      const loginButton = document.getElementById('login-button');
+      
+      loginButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const message = document.getElementById('message');
+
+        if (localStorage.getItem(username)) {
+          const storedPassword = JSON.parse(localStorage.getItem(username)).password;
+
+          if (password === storedPassword) {
+            message.innerHTML = `Login successful, welcome back ${ JSON.parse(localStorage.getItem(username)).firstName}!`;
+          } else {
+            message.innerHTML = `Incorrect password, please <a href="#" onclick="resetPass()">try again</a>.`;
+          }
+        } else {
+          message.innerHTML = `Username not found, please <a href="#" onclick="resetForm()">try again</a>.`;
+        }
+      });
+
+      function resetForm() {
+        document.getElementById('message').innerHTML = '<br>';
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+      }
+      function resetPass() {
+        document.getElementById('message').innerHTML = '<br>';
+        document.getElementById('password').value = '';
+      }
+    </script>
+
+</body>
+</html>

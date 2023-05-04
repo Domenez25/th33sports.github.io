@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Esport</title>
+  <link rel="stylesheet" href="styles.css">
+  <style type="text/css">
+button {
+  background-color: #333;
+  border: 1px solid #fff;
+  padding: 5px;
+  position: relative;
+  width: 7.5em;
+  height: 2.5em;
+  transition: 0.5s;
+  font-size: 17px;
+  border-radius: 0.4em;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+button p {
+  position: absolute;
+  top: 0.4em;
+  left: 1.2em;
+  margin: 0;
+  padding: 5px;
+  transition: .5s;
+  color: #fff;
+}
+
+button svg {
+  position: absolute;
+  top: 0.45em;
+  right: 0.5em;
+  margin: 0;
+  padding: 0px;
+  margin: 5px 0px;
+  opacity: 0;
+  transition: 0.5s;
+  height: 1em;
+  fill: #4444FF;
+}
+
+button:hover p {
+  left: 0.6em;
+  color: #fff
+}
+
+button:hover svg {
+  opacity: 1;
+}
+
+button:hover {
+  background-image: linear-gradient(to left, #4444FF, #0066ff);;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="Teams.html">Teams</a></li>
+      <li><a href="store.html">Store</a></li>
+    </ul>
+    <div class="account">
+        <a href="#" onclick="openLogin()">Account/Login</a>
+    </div>
+  </nav>
+  <section id="pagecontent">
+  <header>
+    <h1>The Esports Store</h1>
+    <p>Welcome to our store</p>
+  </header>
+  <section class="news">
+    <h2>Our merchendise</h2>
+    <div class="news-items">
+      <div class="news-item">
+        <img src="news1.jpg" alt="News Image">
+        <h3>first item</h3>
+        <p>Short description </p>
+        <span class="product-price">$29.99</span>
+          <button>
+            <p>Add to cart</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+          </button>
+      </div>
+      <div class="news-item">
+        <img src="news2.jpg" alt="News Image">
+        <h3>second Item</h3>
+        <p>Short description</p>
+        <span class="product-price">$29.99</span>
+        <button>
+          <p>Add to cart</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+        </button>
+      </div>
+      <div class="news-item">
+        <img src="news3.jpg" alt="News Image">
+        <h3>third Item</h3>
+        <p>Short description</p>
+        <span class="product-price">$29.99</span>
+        <button>
+          <p>Add to cart</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+        </button>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="news">
+    <div class="news-items">
+      <div class="news-item">
+        <img src="news1.jpg" alt="News Image">
+        <h3>first item</h3>
+        <p>Short description </p>
+        <span class="product-price">$29.99</span>
+         <button>
+            <p>Add to cart</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+          </button>
+        
+      </div>
+      <div class="news-item">
+        <img src="news2.jpg" alt="News Image">
+        <h3>second Item</h3>
+        <p>Short description</p>
+        <span class="product-price">$29.99</span>
+         <button>
+            <p>Add to cart</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+          </button>
+        
+      </div>
+      <div class="news-item">
+        <img src="news3.jpg" alt="News Image">
+        <h3>third Item</h3>
+        <p>Short description</p>
+        <span class="product-price">$29.99</span>
+         <button>
+            <p>Add to cart</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+          </button>
+        
+      </div>
+    </div>
+  </section>
+  <script src="scripts.js">
+</script>
+
+  <footer>
+    <p>&copy; 2023 Esports Website</p>
+  </footer>
+  </section>
+</body>
+</html>
