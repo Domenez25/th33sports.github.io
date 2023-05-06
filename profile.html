@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Profile Page</title>
+  </head>
+  <body>
+    <nav>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="Teams.html">Teams</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+        <div class="account">
+            <a href="#" onclick="loginButton()">Account/Login</a>
+        </div>
+        </nav>
+        <section id="pagecontent">
+        <header>  
+            <h1>Welcome <span id="username"></span></h1>
+            <p>only you can see this informations about yourself, you can aslso edit them</p>
+        </header>
+            <main>
+                <div class="profile-container">
+                    
+                    <div class="details-container">
+                      <img id="pfp" src="">
+                      <div class="info-container">
+                        <p><strong>Name:</strong> <span id="name"></span></p>
+                        <p><strong>Bio:</strong> <span id="bio"></span></p>
+                        <p><strong>User type:</strong> <span id="user-type"></span></p>
+                        <p><strong>email:</strong><i> <u><span id="email"></span></u></i></p>
+                      </div> 
+                    </div>
+                    <br><br>
+                    <div id="profile-buttons" align="center">
+                        <button id="edit-profile-button">Edit Profile</button>
+                        <button id="change-password-button">Change Password</button>
+                        <button onclick="window.location.href = 'index.html';" id="disconnect">disconnect</button>
+                      </div>
+                  </div>
+                 
+        </main>
+    </section>
+    <script>
+            function checkLogin() {
+                const cookies = document.cookie.split("; ");
+                for (const cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (value === "admin" || value === "not_admin") {
+                        return name;
+                    }
+                }
+                return null;
+                }
+      
+            const username = checkLogin();
+            const user = JSON.parse(localStorage.getItem(username));
+
+
+            // Populate the profile page with the user's data
+            document.getElementById('username').textContent = username;
+            document.getElementById('name').textContent = `${user.firstName} ${user.lastName}`;
+            document.getElementById('bio').textContent = user.bio;
+            document.getElementById('pfp').src = user.pfp;
+            document.getElementById('user-type').textContent = user.admin ? 'Admin' : 'Visitor';
+            document.getElementById('email').textContent = user.email;
+
+    </script>
+    <script src="accounts.js"></script>  
+  </body>
+</html>

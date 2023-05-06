@@ -102,6 +102,20 @@
 
           if (password === storedPassword) {
             message.innerHTML = `Login successful, welcome back ${ JSON.parse(localStorage.getItem(username)).firstName}!`;
+            const isAdmin = JSON.parse(localStorage.getItem(username)).admin;
+            
+            const expirationDate = new Date();
+            expirationDate.setTime(expirationDate.getTime() + (60 * 60 * 1000));
+            document.cookie = `isLoggedIn=true; path=/; expires= ${expirationDate.toUTCString()}`;
+
+            if (isAdmin) {
+              document.cookie = `${username}=admin; expires=${expirationDate.toUTCString()}`;
+            } else {
+              document.cookie = `${username}=not_admin; expires=${expirationDate.toUTCString()}`;
+            }
+            window.opener.location.href = 'Home.html';
+            window.close();
+
           } else {
             message.innerHTML = `Incorrect password, please <a href="#" onclick="resetPass()">try again</a>.`;
           }

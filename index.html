@@ -9,17 +9,17 @@
 <body>
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="Home.html">Home</a></li>
       <li><a href="schedule.html">Schedule</a></li>
       <li><a href="Teams.html">Teams</a></li>
       <li><a href="store.html">Store</a></li>
     </ul>
     <div class="account">
-        <a href="#" onclick="openLogin()">Account/Login</a>
+        <a href="#" onclick="loginButton()">Account/Login</a>
     </div>
   </nav>
   <section id="pagecontent">
-  <header>
+  <header>  
     <h1>Esports Website</h1>
     <p>Stay up-to-date with the latest news and events in the world of esports!</p>
   </header>
@@ -46,10 +46,25 @@
       </div>
     </div>
   </section>
-
+        
     <script src="scripts.js">
     </script>
+    <script>
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i];
+          const eqPos = cookie.indexOf('=');
+          const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;
+        }
+        document.cookie = `isLoggedIn=false; path=/;`
+      
 
+      
+    </script>
+  <script src="accounts.js"></script> 
+  </section>
+  
   <footer>
     <p>&copy; 2023 Esports Website</p>
   </footer>
