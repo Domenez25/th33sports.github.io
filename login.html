@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
       <style type="text/css">
@@ -11,7 +11,7 @@
           .box {
             border: none;
             outline: none;
-            border-radius: 15px;
+            border-radius: 5px;
             padding: 1em;
             background-color: rgb(220, 243, 255);
             box-shadow: inset 2px 5px 10px rgba(0, 77, 141, 0.2);
@@ -46,24 +46,24 @@
                 transform: translate(0em, 0.2em);
             }
 
-
-            #content {
-                width: auto;
-                height: 450px;
-                border-radius: 50px;
-                background-image: linear-gradient(to right, #5165ff, #00AAFF);
-                box-shadow: 20px 20px 60px #bebebe,
-               -20px -20px 60px #ffffff;
-            }
-
             h1, #message {
               padding-top: 10px; 
-              color: white; 
+              color: black; 
               font-family: sans-serif; 
               font-weight: bold;
             }
             
-            
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            #content {
+              max-width: 500px;
+              padding: 20px 50px;
+              background-color: #f2f2f2;    
+              margin: 20px;
+              border-radius: 10px;
+            }
       </style>
 
 </head>
@@ -86,9 +86,25 @@
     <br>
   </div>
 
-    
-    <script src="accounts.js"></script>  
     <script>
+                  function checkLogin() {
+                const cookies = document.cookie.split("; ");
+                for (const cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (value === "admin" || value === "not_admin") {
+                        return name;
+                    }
+                }
+                return null;
+                }
+      
+            const username = checkLogin();
+            const user = JSON.parse(localStorage.getItem(username));
+
+            if(typeof username === "string") {
+                  window.location.href = "profile.html"
+                }
+
       const loginButton = document.getElementById('login-button');
       
       loginButton.addEventListener('click', function(event) {

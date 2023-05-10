@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        label {
+            display: inline-block;
+            text-align: left;
+            padding: 5px;   
+        }
+        
+        .inp {
+            display: inline-block;
+            text-align: right;
+        }
+
+        #designation {
+            width: 100%;
+        }
+        #expires {
+            width: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            font-size: 1em;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: #f2f2f2;
+            color: #444;
+            text-align: center;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            background-color: #f8f8f6;
+        }
+
+        form {
+  max-width: 500px;
+  padding: 20px 50px;
+  background-color: #f2f2f2;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+input,
+select {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  background-color: #fff;
+}
+
+#sub {
+  border: none;
+  border-radius: 3px;
+  padding: 7px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#sub:hover {
+  background-color: #3e8e41;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+h3, .inp {
+  font-size: 1.5em;
+  margin: 1em 0;
+  text-align: center;
+}
+
+textarea {
+    margin: 0px;
+}
+
+
+    </style>
+
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)" id="myForm">
+        <label>content:</label><br>
+        <textarea type="text" id="designation" name="content" cols="50" rows="6" ></textarea><br><br>
+        
+        <label for="expires">Expires (in minutes):</label>
+        <input type="number" id="expires" name="expires" required><br>
+    
+        <br><br>
+        
+        <div align="center"><input type="submit" id="sub" value="Add"></div>
+      </form>  
+      
+    <script>
+
+function handleSubmit(event) {
+
+  event.preventDefault();
+   
+  const formData = new FormData(event.target);
+
+  window.opener.handleFormData(formData);
+
+  window.close();
+}
+    </script>
+</body>
+</html>

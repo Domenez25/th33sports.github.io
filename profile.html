@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes/default.css">
     <title>Profile Page</title>
   </head>
   <body>
@@ -38,15 +38,26 @@
                     </div>
                     <br><br>
                     <div id="profile-buttons" align="center">
-                        <button id="edit-profile-button">Edit Profile</button>
-                        <button id="change-password-button">Change Password</button>
-                        <button onclick="window.location.href = 'index.html';" id="disconnect">disconnect</button>
+                        <a href="edit.html"><button id="edit-profile-button">Edit Profile</button></a>
+                        <a href="password.html"><button id="change-password-button">Change Password</button></a>
+                        <button onclick="" id="disconnect">disconnect</button>
                       </div>
                   </div>
                  
         </main>
     </section>
     <script>
+            const discbutton = document.getElementById("disconnect");
+            discbutton.addEventListener('click', (event) => {
+              event.preventDefault();
+              document.cookie = `${username} = logged off; expires = Thu, 18 Dec 2013 12:00:00 UTC; path=/;`
+              const expirationDate = new Date();
+              expirationDate.setTime(expirationDate.getTime() + (60 * 60 * 1000));
+              document.cookie = `isLoggedIn=false; path=/; expires= ${expirationDate.toUTCString()}`;
+
+              window.location.href = 'home.html'
+            });
+
             function checkLogin() {
                 const cookies = document.cookie.split("; ");
                 for (const cookie of cookies) {
@@ -61,6 +72,12 @@
             const username = checkLogin();
             const user = JSON.parse(localStorage.getItem(username));
 
+                if(username === null) {
+                  alert("sorry, you have to be logged in to acces this page!")
+                  window.location.href = "home.html"
+                }
+
+
 
             // Populate the profile page with the user's data
             document.getElementById('username').textContent = username;
@@ -71,6 +88,5 @@
             document.getElementById('email').textContent = user.email;
 
     </script>
-    <script src="accounts.js"></script>  
   </body>
 </html>

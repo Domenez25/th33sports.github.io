@@ -4,12 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Esport</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="themes/default.css">
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td, th {
+      padding: 10px;
+      width: 200px;
+    }
+
+    #content {
+      width: 700px;
+    }
+
+    #add {
+      margin: 2em;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 200%;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .image-container:hover img {
+        transform: scale(1.1);
+    }
+
+  </style>
 </head>
 <body>
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="Home.html">Home</a></li>
       <li><a href="schedule.html">Schedule</a></li>
       <li><a href="Teams.html">Teams</a></li>
       <li><a href="store.html">Store</a></li>
@@ -27,27 +66,185 @@
       <h2>Latest News</h2>
       <div class="news-items">
         <div class="news-item">
-          <img src="news1.jpg" alt="News Image">
-          <h3>Article Title</h3>
-          <p>Short article summary</p>
-          <a href="#">Read more</a>
+          <a href="articles/art1.html">
+            <div class="image-container"><img src="articles/art1.jpg" alt="News Image"></div></a>
+          <h3>Red Bull Solo Q Is Back</h3>
+          <p>The official 1v1 League of Legends tournament is back alongside MSI 2023</p>
+          <a href="articles/art1.html" class="a-button">Read more</a>
         </div>
         <div class="news-item">
-          <img src="news2.jpg" alt="News Image">
-          <h3>Article Title</h3>
-          <p>Short article summary</p>
-          <a href="#">Read more</a>
+          <a href="articles/art2.html">
+            <div class="image-container"><img src="articles/art2.jpg" alt="News Image"></div></a>
+          <h3>MSI 2023 to Feature Co-streaming</h3>
+          <p>For the very first time, co-streaming will be available throughout the Mid-Season Invitational</p>
+          <a href="articles/art2.html" class="a-button">Read more</a>
         </div>
         <div class="news-item">
-          <img src="news3.jpg" alt="News Image">
-          <h3>Article Title</h3>
-          <p>Short article summary</p>
-          <a href="#">Read more</a>
+          <a href="articles/art3.html">
+            <div class="image-container"><img src="articles/art3.jpg" alt="News Image"></div></a>
+          <h3>Champions Queue Returns for MSI</h3>
+          <p>The competitive matchmaking experience welcomes all participating MSI 2023 Championship teams.</p>
+          <a href="articles/art3.html" class="a-button">Read more</a>
         </div>
       </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+    <section class="updates">
+      <h2>Updates from admins</h2>
+      <div class="update-list" align="center">
+        <table border="3" align="center" id="maTable">
+          <tr>
+            <th id="source">source</th>
+            <th id="content">content</th>
+            <th id="date">set date</th>
+            <th id="expiry">valide untill</th>
+          </tr>
+        </table>
+      </div>
+      <div id="add-button" align="center"></div>
+      
+      
+      
     </section>
 
       <script src="scripts.js">
+      </script>
+
+      <script>
+          const cookies = document.cookie.split("; ");
+          for (const cookie of cookies) {
+              const [username, value] = cookie.split("=");
+              if (value === "admin") {
+                  document.getElementById("add-button").innerHTML = "<a id='add' onclick='addPage()'>Add news</a id='add'>"
+              }
+          }
+
+          function addPage() {
+              var url = "adding.html";
+              var width = 400;
+              var height = 430;
+              var left = (window.innerWidth - width) / 2;
+              var top = (window.innerHeight - height) / 2;
+              window.open(url, "Login/Signup", "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+          }
+
+
+            
+      </script>
+
+      <script>
+            function checkLogin() {
+                const cookies = document.cookie.split("; ");
+                for (const cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (value === "admin" || value === "not_admin") {
+                        return name;
+                    }
+                }
+                return null;
+                }
+
+                const username = checkLogin();
+
+            let counter = 1;
+            var rowCounter = 1;                
+        function handleFormData(formData) {      
+
+
+            const designation = formData.get("content");
+            const expiration = formData.get("expires")
+            
+            var d = new Date()
+            var currentDate = new Date()
+            d.setTime(d.getTime() + expiration * 1000);
+            var cookieName = "cookie_" + counter;
+            document.cookie = `${cookieName} = ${designation} + ${currentDate.toLocaleTimeString()} + ${d.toLocaleTimeString()} + ${username}; expires = ${d.toUTCString()}`
+
+            rowAdd(username, designation, currentDate.toLocaleTimeString(), d.toLocaleTimeString(), rowCounter);
+
+            let x = true; 
+
+            var intervalId = setInterval(function() {
+                if (document.cookie.indexOf(cookieName + "=") == -1) {
+                    console.log( cookieName + " has expired");
+                    rowSupp(rowCounter)
+                    clearInterval(intervalId);
+                } else {
+                    console.log("not yet..")
+                }
+                
+            }, 1000);
+
+            rowCounter -=1;
+            counter += 1;
+      }
+
+
+        function rowAdd(des, date, prio, timer, row) {
+          var table = document.getElementById("maTable");
+          var row = table.insertRow(row);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+
+          counter ++;
+          rowCounter ++;
+
+          cell1.innerHTML = des;
+          cell2.innerHTML = date;
+          cell3.innerHTML = prio;
+          cell4.innerHTML = timer;
+        }
+
+        function rowSupp(n) {
+          document.getElementById("maTable").deleteRow(n);
+          counter -= 1;
+        }
+
+
+        function checkCookies() {
+          const allCookies = document.cookie;
+          const cookieArray = allCookies.split("; ");
+
+          let counter = 1;
+          var rowCounter = 1;
+
+          for (let i = 0; i < cookieArray.length; i++) {
+            const cookie = cookieArray[i];
+            const [cookieName, cookieValue] = cookie.split("=");
+
+            if (cookieName.startsWith("cookie_")) {
+
+              const [cont, add, end, source] = cookieValue.split("+");
+
+              console.log(`Cookie ${cookieName}:`);
+              console.log(`cont: ${cont}`);
+              console.log(`add: ${add}`);
+              console.log(`end: ${end}`);
+
+              rowAdd(source, cont, add, end, rowCounter)
+
+              rowCounter += 1;
+
+              var intervalId = setInterval(function() {
+                if (document.cookie.indexOf(cookieName + "=") == -1) {
+                    console.log( cookieName + " has expired");
+                    rowSupp(rowCounter)
+                    clearInterval(intervalId);
+                } else {
+                    console.log("not yet..")
+                }
+              }, 1000);
+            
+              rowCounter -=1;
+              counter += 1;
+            }
+          }
+        }
+
+window.onload = checkCookies; 
+        
       </script>
 
     <footer>

@@ -3,7 +3,7 @@ function openLogin() {
     var url = "login.html";
     
     var width = 400;
-    var height = 500;
+    var height = 430;
     
     var left = (window.innerWidth - width) / 2;
     var top = (window.innerHeight - height) / 2;

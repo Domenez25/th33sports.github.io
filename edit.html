@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="themes/default.css">
+    <title>Profile Page</title>
+    <style>
+        input {
+            height: 2.5em;
+            border-radius: 5px;
+            border: 1px solid grey;
+            padding: 5px;
+            font-size: 17px;
+            vertical-align: top;
+        }
+
+        #email {
+            width: 280px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 4em;
+        }
+
+        strong {
+            vertical-align: top;
+            padding: 5px;
+        }
+
+        #form {
+            padding: 5px;
+        }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="Teams.html">Teams</a></li>
+          <li><a href="store.html">Store</a></li>
+        </ul>
+        <div class="account">
+            <a href="profile.html" onclick="loginButton()">Account/Login</a>
+        </div>
+        </nav>
+        <section id="pagecontent">
+        <header>  
+            <h1>Welcome <span id="username"></span></h1>
+            <p>here you can personalise your informations, feel free to do whatever you want</p>
+        </header>
+            <main>
+                <div class="profile-container">
+                    
+                    <div class="details-container">
+                      <img id="pfp" src="">
+                      <form class="info-container">
+                          <p id="form"><strong>Last Name: </strong> <input class="fields" type="text" value="" id="lname"></input></p>
+                          <p id="form"><strong>First Name:</strong> <input class="fields" type="text" value="" id="fname"></input></p>
+                          <p id="form"><strong>Bio:</strong> <textarea class="fields" type="text" value="" id="bio"></textarea></p>
+                          <p id="form"><strong>email:</strong><i> <u><input class="fields" type="email" value="" id="email"></input></u></i></p>
+                          
+                          <input type="submit" onclick="" class="buttons" value="confirm" id="loginbutton">
+                          <input type="button" onclick="" class="buttons" value="clear" id="clear">
+                          <input type="button" onclick="window.location.href = 'profile.html'" class="buttons" value="cancel">
+                      </form> 
+                    </div>
+                    <br><br>
+                  </div>
+        </main>
+    </section>
+    <script>
+            function checkLogin() {
+                const cookies = document.cookie.split("; ");
+                for (const cookie of cookies) {
+                    const [name, value] = cookie.split("=");
+                    if (value === "admin" || value === "not_admin") {
+                        return name;
+                    }
+                }
+                return null;
+                }
+      
+            let username = checkLogin();
+            const user = JSON.parse(localStorage.getItem(username));
+
+            if(username === null) {
+                alert("sorry, you have to be logged in to acces this page!")
+                  window.location.href = "home.html"
+                }
+
+
+            // Populate the profile page with the user's data
+            document.getElementById('username').textContent = username;
+            document.getElementById('fname').placeholder = user.firstName;
+            document.getElementById('lname').placeholder = user.lastName;
+            document.getElementById('bio').placeholder = user.bio;
+            document.getElementById('email').placeholder = user.email;
+
+
+            const loginButton = document.getElementById("loginbutton")
+            loginButton.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                const firstName = document.getElementById('fname').value;
+                const lastName = document.getElementById('lname').value;
+                const email = document.getElementById('email').value;
+                const bio = document.getElementById('bio').value;
+            
+
+                // Update the user's data with the new values
+                
+                if(firstName !== "") {
+                    user.firstName = firstName;
+                }
+                if(lastName !== "") {
+                    user.lastName = lastName;
+                }
+                if(email !== "") {
+                    user.email = email;
+                }
+                if(bio !== "") {
+                    user.bio = bio;
+                }
+                // Save the updated users object to localStorage
+                alert("profile seccusfully updated! ")
+                localStorage.setItem(username, JSON.stringify(user));
+
+                window.location.href= "profile.html"
+            });
+
+
+            const clearButton = document.getElementById("clear")
+
+            clearButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                var inputs = document.getElementsByClassName('fields');
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].value = ""
+                }
+            });
+  </script>
+
+  </body>
+</html>

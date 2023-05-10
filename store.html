@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Esport</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="themes/default.css">
   <style type="text/css">
 button {
   background-color: #333;
@@ -67,7 +67,7 @@ button:hover {
       <li><a href="store.html">Store</a></li>
     </ul>
     <div class="account">
-        <a href="#" onclick="openLogin()">Account/Login</a>
+        <a href="#" onclick="loginButton()">Account/Login</a>
     </div>
   </nav>
   <section id="pagecontent">
@@ -79,9 +79,9 @@ button:hover {
     <h2>Our merchendise</h2>
     <div class="news-items">
       <div class="news-item">
-        <img src="news1.jpg" alt="News Image">
-        <h3>first item</h3>
-        <p>Short description </p>
+        <div class="image-container"><img src="merch/1.jpg" alt="News Image"></div>
+        <h3>MSI 2023 DEFY Scarf</h3>
+        <p class="desc">Last week </p>
         <span class="product-price">$29.99</span>
           <button>
             <p>Add to cart</p>
@@ -89,20 +89,20 @@ button:hover {
           </button>
       </div>
       <div class="news-item">
-        <img src="news2.jpg" alt="News Image">
-        <h3>second Item</h3>
-        <p>Short description</p>
-        <span class="product-price">$29.99</span>
+        <div class="image-container"><img src="merch/2.jpg" alt="News Image"></div>
+        <h3>MSI 2023 ALL ODDS Tee</h3>
+        <p class="desc">Yesterday</p>
+        <span class="product-price">$49.99</span>
         <button>
           <p>Add to cart</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
         </button>
       </div>
       <div class="news-item">
-        <img src="news3.jpg" alt="News Image">
-        <h3>third Item</h3>
-        <p>Short description</p>
-        <span class="product-price">$29.99</span>
+        <div class="image-container"><img src="merch/3.jpg" alt="News Image"></div>
+        <h3>Mageseeker Collectors Edition</h3>
+        <p class="desc">Last month</p>
+        <span class="product-price">$99.99</span>
         <button>
           <p>Add to cart</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
@@ -111,13 +111,24 @@ button:hover {
       </div>
     </div>
   </section>
-
+  <br><br><br><br><br><br><br><br><br>
   <section class="news">
     <div class="news-items">
       <div class="news-item">
-        <img src="news1.jpg" alt="News Image">
-        <h3>first item</h3>
-        <p>Short description </p>
+        <div class="image-container"><img src="merch/4.jpg" alt="News Image"></div>
+        <h3>MSI 2023 DEFY Hoodie</h3>
+        <p class="desc" id="outdated">out of stock </p>
+        <span class="product-price">$69.99</span>
+         <button>
+            <p>Add to cart</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
+          </button>
+        
+      </div>
+      <div class="news-item">
+        <div class="image-container"><img src="merch/5.jpg" alt="News Image"></div>
+        <h3>Infinity Studio Gwen Statue</h3>
+        <p class="desc">Yesterday</p>
         <span class="product-price">$29.99</span>
          <button>
             <p>Add to cart</p>
@@ -126,21 +137,10 @@ button:hover {
         
       </div>
       <div class="news-item">
-        <img src="news2.jpg" alt="News Image">
-        <h3>second Item</h3>
-        <p>Short description</p>
-        <span class="product-price">$29.99</span>
-         <button>
-            <p>Add to cart</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-          </button>
-        
-      </div>
-      <div class="news-item">
-        <img src="news3.jpg" alt="News Image">
-        <h3>third Item</h3>
-        <p>Short description</p>
-        <span class="product-price">$29.99</span>
+        <div class="image-container"><img src="merch/6.jpg" alt="News Image"></div>
+        <h3>True Damage Jackets Are In!</h3>
+        <p class="desc">Last week</p>
+        <span class="product-price">$99.99</span>
          <button>
             <p>Add to cart</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
@@ -149,7 +149,9 @@ button:hover {
       </div>
     </div>
   </section>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   <script src="scripts.js">
+  </script>
 </script>
 
   <footer>
