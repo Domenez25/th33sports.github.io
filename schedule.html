@@ -3,8 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Esport</title>
-  <link rel="stylesheet" href="themes/default.css">
+  <title>tables</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    select {
+      width: 100%;
+    }
+    .news-item a {
+      margin: 10px 50px;
+    }
+
+form {
+	max-width: 500px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+select option[value="none"] {
+	color: #888;
+}
+
+  </style>
 </head>
 <body>
   <nav>
@@ -20,39 +42,334 @@
   </nav>
   <section id="pagecontent">
   <header>
-    <h1>Esports Website</h1>
-    <p>Stay up-to-date with the latest news and events in the world of esports!</p>
+    <h1>Play and win!</h1>
+    <p></p>
   </header>
   <section class="news">
-    <h2>Latest News</h2>
+    <h2>Giveaway</h2>
     <div class="news-items">
       <div class="news-item">
-        <img src="news1.jpg" alt="News Image">
-        <h3>Article Title</h3>
-        <p>Short article summary</p>
-        <a href="#">Read more</a>
+        <h3>How to play?</h3>
+        <p>to start the giveaway put 5$ in the jar, and the winner will get 20$ store money. if you win you can have an exclusiv msi shirt and 50$ to buy what ever you want with</p>
+        <p>you can 5 tries every minute..</p>
       </div>
       <div class="news-item">
-        <img src="news2.jpg" alt="News Image">
-        <h3>Article Title</h3>
-        <p>Short article summary</p>
-        <a href="#">Read more</a>
+        <h3>Your current balance is: <span id="balance"></span>.00 $</h3>
+        <p id="tries">Tries left: <span id="tries-left"></span></p><br>
+        <div style="display: flex;">
+          <a class="a-button" align="center" id="activate" onclick="activatePool()">Activate (-5$)</a>
+        </div>
+        <p id="result" align="center" style="font-size: 20px; font-weight:bold; margin-right: 50px;"></p>
       </div>
       <div class="news-item">
-        <img src="news3.jpg" alt="News Image">
-        <h3>Article Title</h3>
-        <p>Short article summary</p>
-        <a href="#">Read more</a>
+        <h3>MSI 2023 DEFY Longsleeve Tee</h3>        
+        <img src="merch/giveaway.jpg" alt="News Image">
+        
+      </div>
+    </div>
+
+    <h2>Bet Game</h2>
+    <div class="news-items">
+      <div class="news-item">
+        <h3>PLAY-INS</h3>
+        <form id="knocks">
+          <!-- Match-up 1 -->
+          <p>match 1</p>
+          <select name="match1" required>
+            <option value="none">Choose a team</option>
+            <option value="PSG Talon">PSG Talon</option>
+            <option value="Detonation FM">Detonation FM</option>
+          </select>
+          <!-- Match-up 2 -->
+          <p>match 2</p>
+          <select name="match2" required>
+            <option value="none">Choose a team</option>
+            <option value="G2 Esports">G2 Esports</option>
+            <option value="Loud LL">Loud LL</option>
+          </select>
+          <!-- Match-up 3 -->
+          <p>match 3</p>
+          <select name="match3" required>
+            <option value="none">Choose a team</option>
+            <option value="Bilibili Gaming">Bilibili Gaming</option>
+            <option value="Movistar R7">Movistar R7</option>
+          </select>
+          <!-- Match-up 4 -->
+          <p>match 4</p>
+          <select name="match4" required>
+            <option value="none">Choose a team</option>
+            <option value="Golden Guardians">Golden Guardians</option>
+            <option value="Gam Esports">Gam Esports</option>
+          </select>
+          <br>
+          <input type="submit" id="knockssub" value="Submit">
+        </form>
+      </div>
+      <div class="news-item">
+        <h3>To the Finals!</h3>
+        <div id="finaldiv">
+            <!-- Finale Match-up -->
+        </div>
+      </div>
+      <div class="news-item">
+        <h3>MSI 2023 Schedule</h3>        
+        <img src="other/playins.jpg" alt="News Image">
+        
       </div>
     </div>
   </section>
 
-    <script src="scripts.js">
-    </script>
+
+<script>
+
+const username = getUser();
+  if(username != "") {
+    let user = JSON.parse(localStorage.getItem(username));
+    var balance = user.balance
+  }
+document.getElementById("balance").textContent = balance;
+
+var triesLeft = 5
+function init() {
+  let triesLeft = getCookie("tries");
+  if (!triesLeft) {
+    triesLeft = 5;
+    setCookie("tries", triesLeft, 60);
+  }
+  document.getElementById("tries-left").textContent = triesLeft;
+}
+init();
+setInterval(init, 60000);
+
+function activatePool() {
+  const username = getUser();
+  if(username != "") {
+    let user = JSON.parse(localStorage.getItem(username));
+    var balance = user.balance
+    console.log(user.balance)
+
+    if (triesLeft > 0) {
+      if (balance >= 5) {
+        user.balance -= 5;
+        localStorage.setItem(username, JSON.stringify(user));
+        document.getElementById("balance").textContent = user.balance;
+        alert("Pool activated! get ready after three seconds!");
+        triesLeft--;
+        setCookie("tries", triesLeft, 60);
+        document.getElementById("tries-left").textContent = triesLeft;
+        if (username === getWinner()) {
+          user.balance += 50;
+          localStorage.setItem(username, JSON.stringify(user));
+
+          setTimeout(function() {
+            document.getElementById("balance").textContent = user.balance;
+            document.getElementById("result").textContent = "Congratulations, you won!";
+            alert("Congratulations, you won 1 MSI 2023 DEFY Longsleeve Tee and 50.00$ shop credit");
+          }, 3000);
+          
+        } else {
+          const winner = getWinner();
+          const winnerUser = JSON.parse(localStorage.getItem(winner));
+          winnerUser.balance += 20;
+          localStorage.setItem(winner, JSON.stringify(winnerUser));
+          setTimeout(function() {
+            document.getElementById("result").textContent = "Sorry, better luck next time!";
+            alert(`winner was: ${winner}. Better luck next time!`);
+          }, 3000);
+
+        }
+      } else {
+        alert("Not enough balance!");
+      }
+    } else {
+      alert("Out of tries, wait till filled up.");
+    }
+  } else {
+    alert("Please log in to activate the pool.");
+  }
+}
+
+function getWinner() {
+  const usernames = Object.keys(localStorage);
+  console.log(usernames)
+  const filteredUsernames = usernames.filter((username) => {
+  return !username.startsWith("request");
+});
+console.log(filteredUsernames)
+  const index = Math.floor(Math.random() * filteredUsernames.length);
+  return filteredUsernames[index];
+}
+
+function setCookie(name, value, seconds) {
+  const date = new Date();
+  date.setTime(date.getTime() + (seconds * 1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  const cookies = document.cookie.split(";");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(name + "=")) {
+      return cookie.substring(name.length + 1);
+      }
+    }
+  return "";
+}
+
+function getUser() {
+  const cookies = document.cookie.split("; ")
+  console.log(cookies)
+  for (let i = 0; i < cookies.length; i++) {
+    console.log(cookies[i])
+    const [name, value] = cookies[i].split("=")
+    if (value === "admin" || value === "not_admin") {
+      console.log(name)
+      return name;
+    }
+  }
+  return "";
+}
+
+</script>
+
+
+
+<script>
+ 
+var round1 = false
+var round2 = false
+
+  // Define the matches with their teams
+const matches = [
+	{ team1: 'PSG Talon', team2: 'Detonation FM', winner: '' },
+	{ team1: 'G2 Esports', team2: 'Loud LL', winner: '' },
+	{ team1: 'Bilibili Gaming', team2: 'Movistar R7', winner: '' },
+	{ team1: 'Golden Guardians', team2: 'Gam Esports', winner: '' },
+];
+
+// Define the final match with its winners
+const finalMatch = { team1: '', team2: '', team3: '', team4: '', winner: '' };
+
+// Select the winners randomly
+matches.forEach(match => {
+	const winner = Math.round(Math.random()) ? match.team1 : match.team2;
+	match.winner = winner;
+});
+
+finalMatch.team1 = matches[0].winner;
+finalMatch.team2 = matches[1].winner;
+finalMatch.team3 = matches[2].winner;
+finalMatch.team4 = matches[3].winner;
+
+finalMatch.winner = finalMatch[Object.keys(finalMatch)[Math.floor(Math.random() * 4)]];
+
+
+// Get the form elements
+const form = document.querySelector('#knocks');
+const selects = form.querySelectorAll('select');
+const submit = form.querySelector('#knockssub');
+
+// Set the default value for the select options
+selects.forEach(select => {
+	select.options[0].text = 'Choose a team';
+});
+
+// Handle the form submission
+submit.addEventListener('click', function() {
+	event.preventDefault();
+	let correct = true;
+  if(round1) {
+    alert('you have already played this stage')
+  } else {
+    if(username != "") {
+    let user = JSON.parse(localStorage.getItem(username));
+    var balance = user.balance
+
+    // Check the user's answers and update the balance
+    for(let select of selects) {
+      if (select.value === 'none') {
+        alert('Please select a team for all matches');
+        correct = false;
+      } 
+    }
+    if(correct) {
+      for(let i = 0; i < selects.length; i++) {  
+        if (selects[i].value !== matches[i].winner) {
+          balance -= 10;
+          alert(`match ${i + 1} wrong -10$`)
+          selects[i].style.backgroundColor = '#ffaaaa';
+        } else {
+          balance += 20;
+          alert(`match ${i + 1} right +20$`)
+          selects[i].style.backgroundColor = '#aaffaa';
+        }
+      }
+      alert(`balance is now : ${balance}`)
+      round1 = true
+      user.balance = balance
+      document.getElementById("balance").textContent = user.balance;
+      localStorage.setItem(username, JSON.stringify(user));
+    };
+
+    // Show the final result
+    if (correct) {
+      document.getElementById("finaldiv").innerHTML = `
+          <form id="finalform">
+            <p>only one team should win!<br>chose wisely</p>
+            <select id="finselect" name="match4" required>
+              <option value="none">Choose a team</option>
+              <option value="${matches[0].winner}">${matches[0].winner}</option>
+              <option value="${matches[1].winner}">${matches[1].winner}</option>
+              <option value="${matches[2].winner}">${matches[2].winner}</option>
+              <option value="${matches[3].winner}">${matches[3].winner}</option>
+            </select>
+            <br>
+            <input type="submit" id="finalsub" value="Submit">
+          </form>
+      `
+
+            const finform = document.querySelector('#finalform');
+            const finselect = finform.querySelector('#finselect');
+            const finsubmit = finform.querySelector('#finalsub');
+
+            // Handle the form submission
+            finsubmit.addEventListener('click', function() {
+              event.preventDefault();
+              if(round2) {
+                alert('you have already played this round')
+              } else {
+                if (finselect.value != 'none') {
+                if (finalMatch.winner === finselect.value) {
+                  balance += 50;
+                  alert(`Congratulations! You won the final match and your balance is now ${balance}`);
+                  finselect.style.backgroundColor = '#aaffaa';
+                } else {
+                  balance -= 40;
+                  alert(`Sorry, you lost the final match better luck next time, balance = ${balance}`);
+                  finselect.style.backgroundColor = '#ffaaaa';
+                }
+                document.getElementById("balance").textContent = user.balance;
+                user.balance = balance;
+                localStorage.setItem(username, JSON.stringify(user));
+                round2 = true
+              } else {
+                alert('Please select a team for the final match')
+              } }
+            });     
+    }
+  } else {
+    alert('you must be logged in to perform this action')
+  }}
+});
+
+</script>
 
   <footer>
     <p>&copy; 2023 Esports Website</p>
   </footer>
 </section>
+<script src="scripts.js"></script>
 </body>
 </html>

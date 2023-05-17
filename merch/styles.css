@@ -1,0 +1,65 @@
+.item-container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    }
+
+.item-container img {
+    max-width: 45%;
+    margin-right: 20px;
+    border-radius: 5px;
+    }
+
+.item-description {
+    font-size: 18px;
+    display: block;
+    padding-right: 100px;
+    line-height: 2rem;
+    font-family: 'Colfax',Helvetica,sans-serif;
+}
+
+.item-details {
+    margin: 5px;
+}
+
+.item-details h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    }
+
+.item-details p {
+    margin-bottom: 10px;
+    }
+
+.item-price {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    }
+
+.add-to-cart {
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    }
+
+.add-to-cart:hover {
+    background-color: #005A6E;
+    }
+
+.item-description ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}

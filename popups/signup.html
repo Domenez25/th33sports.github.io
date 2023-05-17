@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login window</title>
+
+      <style type="text/css">
+            
+          .input , .names{
+            width: 100%;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 1em;
+            background-color: #f2f2f2;
+            box-shadow: inset 2px 5px 10px rgba(0, 77, 141, 0.15);
+            transition: 300ms ease-in-out;  
+            position: relative;
+            }
+
+          .input:focus, .names:focus {
+              background-color: white;
+              transform: scale(1.05);
+              box-shadow: 3px 3 130px #969696,
+                        -13 -13 130px #ffffff;
+            }
+            .form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .signupButton {
+              margin: 10px;
+                font-size: 17px;
+                padding: 0.5em 2em;
+                border: transparent;
+                box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+                background: dodgerblue;
+                color: white;
+                border-radius: 4px;
+                cursor: pointer;
+                border: 1px solid #969696;
+            }
+
+            .signupButton:hover {
+                background: rgb(2,0,36);
+                background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+            }
+
+            .signupButton:active {
+                transform: translate(0em, 0.2em);
+            }
+
+            h1, #message {
+              color: black; 
+              font-family: sans-serif; 
+              font-weight: bold;
+            }
+            
+            body {
+                font-family: Arial, sans-serif;
+            }
+
+            #content {
+              max-width: 500px;
+              padding: 1px 50px 0px 25px;
+              background-color: rgb(220, 243, 255);;    
+              margin: 20px;
+              border-radius: 10px;
+            }
+      </style>
+
+</head>
+<body align="center">
+    
+    <div id="content">
+    <h1>Register</h1>
+    
+    <form class="form">
+        <label>
+            <input id="username" required="" placeholder="Username" type="text" class="input">
+        </label> 
+            <div style="display: flex;" class="flex">
+            <label>
+                <input style="margin-right: 20px;" id="firstName" required="" placeholder="Firstname" class="names" type="text">
+            </label>
+    
+            <label>
+                <input style="margin-left: 39px;" id="lastname" required="" placeholder="Lastname" class="names" type="text">
+            </label>
+        </div>  
+                
+        <label>
+            <input id="email" required="" placeholder="Email" type="email" class="input">
+        </label> 
+        <label>
+            <input id="password" required="" placeholder="Password" type="password" class="input">
+        </label>
+        <label>
+            <input id="Confirm" required="" placeholder="Confirm password" type="password" class="input">
+        </label>
+        <input type="submit" value="Singup" id="signButton" class="signupButton">
+        <p class="signin">Already have an acount ? <a href="login.html">Signin</a> </p>
+    </form>
+    <div id="message"><br></div>
+  </div>
+
+    <script>
+      const signupButton = document.querySelector('#signButton');
+      
+      signupButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        const username= document.getElementById('username').value;
+        const fName = document.getElementById('firstName').value;
+        const lastname = document.getElementById('lastname').value;
+        const email = document.getElementById('email').value;
+        const pass = document.getElementById('password').value;
+        const confirm = document.getElementById('Confirm').value;
+        const message = document.getElementById('message');
+
+        const itemExists = localStorage.getItem(username) !== null;
+
+        if (itemExists) {
+            message.innerHTML = "User already exists";
+            } else {
+
+        const randomPfp = Math.floor(Math.random() * 10) + 1;
+        let pfp;
+
+        switch (randomPfp) {
+        case 1:
+            pfp = "/pfp/1.jpg";
+            break;
+        case 2:
+            pfp = "/pfp/2.png";
+            break;
+        case 3:
+            pfp = "/pfp/3.png";
+            break;
+        case 4:
+            pfp = "/pfp/4.jpg";
+            break;
+        case 5:
+            pfp = "/pfp/5.jpeg";
+            break;
+        case 6:
+            pfp = "/pfp/6.png";
+            break;
+        case 7:
+            pfp = "/pfp/7.jpg";
+            break;
+        case 8:
+            pfp = "/pfp/8.jpg";
+            break;
+        case 9:
+            pfp = "/pfp/9.png";
+            break;
+        default:
+            pfp = "/pfp/d.jpg";
+        }
+
+        if(confirm === pass) {
+            if(username && fName && lastname && email && pass && confirm) {
+                let user = {
+                    lastName: lastname, 
+                    firstName: fName,
+                    password: pass,
+                    pfp: pfp, 
+                    admin: false,
+                    bio: '',
+                    email: email ,
+                    theme: 'default',
+                    balance: 50.00
+                }
+                localStorage.setItem(username, JSON.stringify(user))
+                alert(`sign up seccusfuly, welcome among the community ${username}`)
+                window.location.href = '/login.html'
+            } else {
+                message.innerHTML = `<p>all fields must be filled</p>`
+            }
+        } else {
+            message.innerHTML = `<p>Passwords do not match</p>`
+        }
+    }
+    });
+    </script>
+
+</body>
+</html>

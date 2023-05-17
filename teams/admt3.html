@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSG</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="teams.css">
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><h1>PSG Talon</h1></li>
+        </ul>
+        <div class="account">
+            <a href="../Home.html" target="_parent">Home</a>
+        </div>
+    </nav>
+    <section id="pagecontent">
+    <textarea cols="100" id="bio" ></textarea>
+    <h2>team members:</h2>
+
+<div align="center" class="borderdiv">
+    <form id="myForm">
+        <table>
+            <thead>
+            <tr>
+                <th>username</th>
+                <th>full name</th>
+                <th>nationality</th>
+                <th>role</th>
+                <th>contract ends</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="text" id="username-t3-p1"></td>
+                <td><input type="text" id="fullname-t3-p1"></td>
+                <td><input type="text" id="nationality-t3-p1"></td>
+                <td><select id="role-t3-p1">
+                    <option>toplaner</option>
+                    <option>jungler</option>
+                    <option>midlaner</option>
+                    <option>botlaner</option>
+                    <option>support</option>
+                </select></td>
+                <td><input type="date" id="birth-t3-p1"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="username-t3-p2"></td>
+                <td><input type="text" id="fullname-t3-p2"></td>
+                <td><input type="text" id="nationality-t3-p2"></td>
+                <td><select id="role-t3-p2">
+                    <option>toplaner</option>
+                    <option>jungler</option>
+                    <option>midlaner</option>
+                    <option>botlaner</option>
+                    <option>support</option>
+                </select></td>
+                <td><input type="date" id="birth-t3-p2"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="username-t3-p3"></td>
+                <td><input type="text" id="fullname-t3-p3"></td>
+                <td><input type="text" id="nationality-t3-p3"></td>
+                <td><select id="role-t3-p3">
+                    <option>toplaner</option>
+                    <option>jungler</option>
+                    <option>midlaner</option>
+                    <option>botlaner</option>
+                    <option>support</option>
+                </select></td>
+                <td><input type="date" id="birth-t3-p3"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="username-t3-p4"></td>
+                <td><input type="text" id="fullname-t3-p4"></td>
+                <td><input type="text" id="nationality-t3-p4"></td>
+                <td><select id="role-t3-p4">
+                    <option>toplaner</option>
+                    <option>jungler</option>
+                    <option>midlaner</option>
+                    <option>botlaner</option>
+                    <option>support</option>
+                </select></td>
+                <td><input type="date" id="birth-t3-p4"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="username-t3-p5"></td>
+                <td><input type="text" id="fullname-t3-p5"></td>
+                <td><input type="text" id="nationality-t3-p5"></td>
+                <td><select id="role-t3-p5">
+                    <option>toplaner</option>
+                    <option>jungler</option>
+                    <option>midlaner</option>
+                    <option>botlaner</option>
+                    <option>support</option>
+                </select></td>
+                <td><input type="date" id="birth-t3-p5"></td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Submit">
+        </form>
+    </div>
+</section>
+
+<script>
+    window.onload = function() {
+        const cookies = document.cookie.split('; ');
+        let isLoggedIn = false;
+        let themeUrl
+        for (let cookie of cookies) {
+            const [name, value] = cookie.split('=');
+            if ((value === 'admin' || value === 'not_admin')) {
+                console.log('cookie : ' + name + '_')
+                isLoggedIn = true;
+                themeUrl = JSON.parse(localStorage.getItem(name)).theme
+                break;
+            }
+        }
+        if (!isLoggedIn) {
+            themeUrl = 'default';
+        }
+        console.log('theme : ' + themeUrl)
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `/themes/${themeUrl}.css`;
+      
+        document.head.appendChild(link);
+      }
+      </script>
+<script src="script.js"></script>
+<script>
+        const form = document.querySelector('form');
+        const submitBtn = document.querySelector('input[type="submit"]');
+
+        submitBtn.addEventListener('click', (event) => {
+            event.preventDefault(); 
+                updateTeam3();
+        });
+</script>
+</body>
+</html>

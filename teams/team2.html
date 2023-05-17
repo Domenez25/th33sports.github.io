@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../themes/default.css">
+    <title>G2</title>
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="teams.css">
 
 </head>
 <body>
     <nav>
         <ul>
-            <li><h1>South Korea T1</h1></li>
+            <li><h1>G2 esports</h1></li>
         </ul>
         <div class="account">
             <a href="../Home.html" target="_parent">Home</a>
         </div>
     </nav>
     <section id="pagecontent">
-    <p>T1 is a Korean team owned by SK telecom CS T1 Co., Ltd., the joint venture between SK Telecom and Comcast Spectacor. They were previously known as SK Telecom T1.</p>
+    <p id="bio"></p>
     <h2>team members:</h2>
 
 <div align="center" class="borderdiv">
@@ -34,44 +34,114 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
+            <tr>
+                <td id="user-t2-p1"></td>
+                <td id="name-t2-p1"></td>
+                <td id="nati-t2-p1"></td>
+                <td id="role-t2-p1"></td>
+                <td id="date-t2-p1"></td>
+            </tr>
+            <tr>
+                <td id="user-t2-p2"></td>
+                <td id="name-t2-p2"></td>
+                <td id="nati-t2-p2"></td>
+                <td id="role-t2-p2"></td>
+                <td id="date-t2-p2"></td>
+            </tr>
+            <tr>
+                <td id="user-t2-p3"></td>
+                <td id="name-t2-p3"></td>
+                <td id="nati-t2-p3"></td>
+                <td id="role-t2-p3"></td>
+                <td id="date-t2-p3"></td>
+            </tr>
+            <tr>
+                <td id="user-t2-p4"></td>
+                <td id="name-t2-p4"></td>
+                <td id="nati-t2-p4"></td>
+                <td id="role-t2-p4"></td>
+                <td id="date-t2-p4"></td>
+            </tr>
+            <tr>
+                <td id="user-t2-p5"></td>
+                <td id="name-t2-p5"></td>
+                <td id="nati-t2-p5"></td>
+                <td id="role-t2-p5"></td>
+                <td id="date-t2-p5"></td>
+            </tr>
         </tbody>
     </table>
     </div>
 </section>
+<script>
+    window.onload = function() {
+        const cookies = document.cookie.split('; ');
+        let isLoggedIn = false;
+        let themeUrl
+        for (let cookie of cookies) {
+            const [name, value] = cookie.split('=');
+            if ((value === 'admin' || value === 'not_admin')) {
+                console.log('cookie : ' + name + '_')
+                isLoggedIn = true;
+                themeUrl = JSON.parse(localStorage.getItem(name)).theme
+                break;
+            }
+        }
+        if (!isLoggedIn) {
+            themeUrl = 'default';
+        }
+        console.log('theme : ' + themeUrl)
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `/themes/${themeUrl}.css`;
+      
+        document.head.appendChild(link);
+      }
+      </script>
+
+<script>
+    fetch('teams.json')
+.then(response => response.json())
+.then(data => {
+    // first team
+        const team2= data.teams.team2;
+
+        document.getElementById("bio").textContent = team2.bio
+
+        document.getElementById('user-t2-p1').textContent = team2.player1.username;
+        document.getElementById('name-t2-p1').textContent = team2.player1.fullname;
+        document.getElementById('nati-t2-p1').textContent = team2.player1.nationality;
+        document.getElementById('role-t2-p1').textContent = team2.player1.role;
+        document.getElementById('date-t2-p1').textContent = team2.player1.contract;
+        
+        document.getElementById('user-t2-p2').textContent = team2.player2.username;
+        document.getElementById('name-t2-p2').textContent = team2.player2.fullname;
+        document.getElementById('nati-t2-p2').textContent = team2.player2.nationality;
+        document.getElementById('role-t2-p2').textContent = team2.player2.role;
+        document.getElementById('date-t2-p2').textContent = team2.player2.contract;
+        
+        document.getElementById('user-t2-p3').textContent = team2.player3.username;
+        document.getElementById('name-t2-p3').textContent = team2.player3.fullname;
+        document.getElementById('nati-t2-p3').textContent = team2.player3.nationality;
+        document.getElementById('role-t2-p3').textContent = team2.player3.role;
+        document.getElementById('date-t2-p3').textContent = team2.player3.contract;
+        
+        document.getElementById('user-t2-p4').textContent = team2.player4.username;
+        document.getElementById('name-t2-p4').textContent = team2.player4.fullname;
+        document.getElementById('nati-t2-p4').textContent = team2.player4.nationality;
+        document.getElementById('role-t2-p4').textContent = team2.player4.role;
+        document.getElementById('date-t2-p4').textContent = team2.player4.contract;
+        
+        document.getElementById('user-t2-p5').textContent = team2.player5.username;
+        document.getElementById('name-t2-p5').textContent = team2.player5.fullname;
+        document.getElementById('nati-t2-p5').textContent = team2.player5.nationality;
+        document.getElementById('role-t2-p5').textContent = team2.player5.role;
+        document.getElementById('date-t2-p5').textContent = team2.player5.contract;
+
+})
+.catch(error => {
+  console.error('Error fetching teams:', error);
+});
+</script>
 </body>
 </html>

@@ -1,0 +1,136 @@
+{
+    "teams" : {
+            "team1" : {
+                "player1" : {
+                    "username" : "zeus",
+                    "fullname" : "lee sang",
+                    "nationality" : "korean",
+                    "role" : "toplaner",
+                    "contract" : "2026-05-10"
+                },
+
+                "player2" : {
+                    "username" : "oner",
+                    "fullname" : "the only oner",
+                    "nationality" : "chinese",
+                    "role" : "jungler",
+                    "contract" : "2025-07-13"
+                },
+
+                "player3" : {
+                    "username" : "faker",
+                    "fullname" : "sag hyok",
+                    "nationality" : "south korean",
+                    "role" : "midlaner",
+                    "contract" : "2026-06-06"
+                },
+
+                "player4" : {
+                    "username" : "gumayushi",
+                    "fullname" : "cool name",
+                    "nationality" : "japanese",
+                    "role" : "botlaner",
+                    "contract" : "2027-12-10"
+                },
+
+                "player5" : {
+                    "username" : "keria",
+                    "fullname" : "supp skt1",
+                    "nationality" : "south korean",
+                    "role" : "support",
+                    "contract" : "2025-03-12"
+                },
+                "bio" : "T1 is a Korean team owned by SK telecom CS T1 Co., Ltd., the joint venture between SK Telecom and Comcast Spectacor. They were previously known as SK Telecom T1."
+            },
+
+
+
+            "team2" : {
+                "player1" : {
+                    "username" : "gunblade",
+                    "fullname" : "david smith",
+                    "nationality" : "sweden",
+                    "role" : "toplaner",
+                    "contract" : "2026-05-10"
+                },
+
+                "player2" : {
+                    "username" : "jardinier",
+                    "fullname" : "yova carter",
+                    "nationality" : "germany",
+                    "role" : "jungler",
+                    "contract" : "2026-06-10"
+                },
+
+                "player3" : {
+                    "username" : "caps",
+                    "fullname" : "suarez depolt",
+                    "nationality" : "spanish",
+                    "role" : "midlaner",
+                    "contract" : "2026-05-12"
+                },
+
+                "player4" : {
+                    "username" : "ultimatebot",
+                    "fullname" : "henry thomas",
+                    "nationality" : "germany",
+                    "role" : "botlaner",
+                    "contract" : "2026-05-10"
+                },
+
+                "player5" : {
+                    "username" : "taros",
+                    "fullname" : "darius jarvan",
+                    "nationality" : "italian",
+                    "role" : "support",
+                    "contract" : "2026-05-10"
+                },
+                "bio" : "G2 Esports (G2) is a European esports organization headquartered in Berlin, Germany, with players competing in League of Legends, Valorant, Counter-Strike: Global Offensive, Hearthstone, Rocket League, Rainbow Six Siege, and iRacing. The organization was founded in Spain on 24 February 2014 as Gamers2 by former League of Legends pro Carlos \"ocelote\" Rodríguez Santiago and investor Jens Hilgers. The organization rebranded as G2 Esports on 15 October 2015"
+            },
+
+
+            
+            "team3" : {
+                "player1" : {
+                    "username" : "sweetDevil",
+                    "fullname" : "juan hernandez",
+                    "nationality" : "mexican",
+                    "role" : "toplaner",
+                    "contract" : "2024-05-10"
+                },
+
+                "player2" : {
+                    "username" : "domenez25",
+                    "fullname" : "bouzara zakaria",
+                    "nationality" : "algerian",
+                    "role" : "jungler",
+                    "contract" : "2026-05-10"
+                },
+
+                "player3" : {
+                    "username" : "tornado",
+                    "fullname" : "thiago manini",
+                    "nationality" : "brazillian",
+                    "role" : "midlaner",
+                    "contract" : "2025-07-22"
+                },
+
+                "player4" : {
+                    "username" : "playerxxx",
+                    "fullname" : "bouzara zakaria",
+                    "nationality" : "japanese",
+                    "role" : "botlaner",
+                    "contract" : "2026-07-29"
+                },
+
+                "player5" : {
+                    "username" : "renataSmurf",
+                    "fullname" : "ancheliote",
+                    "nationality" : "brazillian",
+                    "role" : "support",
+                    "contract" : "2026-10-07"
+                },
+                "bio" : "PSG Talon is a professional League of Legends team formed from a partnership between PSG Esports and Talon Esports. Talon Esports' original League of Legends team was founded on 18 December 2019"
+        }
+    }
+}

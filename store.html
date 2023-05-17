@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Esport</title>
-  <link rel="stylesheet" href="themes/default.css">
+  <title>Store page</title>
+  <link rel="stylesheet" href="/styles.css">
   <style type="text/css">
 button {
   background-color: #333;
@@ -56,6 +56,50 @@ button:hover {
   background-image: linear-gradient(to left, #4444FF, #0066ff);;
 }
 
+.items {
+  display: flex;
+}
+
+.remove-btn {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  color: 4444FF;
+}
+
+.card {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.desc {
+  display: flex;
+}
+
+.desc p {
+  margin: 5px;
+}
+
+.cart {
+  margin-left: 30px;
+}
+
+#buy {
+  position: relative;
+  height: 2.5em;
+  font-size: 17px;
+  border-radius: 0.4em;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 100px;
+}
+
+.image-container {
+  height: 200%;
+}
+
+
   </style>
 </head>
 <body>
@@ -76,87 +120,207 @@ button:hover {
     <p>Welcome to our store</p>
   </header>
   <section class="news">
+
+
     <h2>Our merchendise</h2>
     <div class="news-items">
       <div class="news-item">
-        <div class="image-container"><img src="merch/1.jpg" alt="News Image"></div>
+        <a href="merch/1.html" target="_blank"><div class="image-container"><img src="merch/1.jpg" alt="News Image"></div></a>
         <h3>MSI 2023 DEFY Scarf</h3>
         <p class="desc">Last week </p>
-        <span class="product-price">$29.99</span>
-          <button>
+        <span class="product-price">$20.00</span>
+          <button onclick="userCheck(); itemList.push(item0); renderItems();">
             <p>Add to cart</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
           </button>
-      </div>
+    </div>
+
+
       <div class="news-item">
-        <div class="image-container"><img src="merch/2.jpg" alt="News Image"></div>
+        <a href="merch/2.html" target="_blank"><div class="image-container"><img src="merch/2.jpg" alt="News Image"></div></a>
         <h3>MSI 2023 ALL ODDS Tee</h3>
         <p class="desc">Yesterday</p>
-        <span class="product-price">$49.99</span>
-        <button>
+        <span class="product-price">$40.00</span>
+          <button onclick="userCheck(); itemList.push(item1); renderItems();">
           <p>Add to cart</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
         </button>
-      </div>
+    </div>
+
+
       <div class="news-item">
-        <div class="image-container"><img src="merch/3.jpg" alt="News Image"></div>
+        <a href="merch/3.html" target="_blank"><div class="image-container"><img src="merch/3.jpg" alt="News Image"></div></a>
         <h3>Mageseeker Collectors Edition</h3>
         <p class="desc">Last month</p>
-        <span class="product-price">$99.99</span>
-        <button>
+        <span class="product-price">$100.00</span>
+          <button onclick="userCheck(); itemList.push(item2); renderItems();">
           <p>Add to cart</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-        </button>
-        
+        </button>        
       </div>
     </div>
+
+
   </section>
   <br><br><br><br><br><br><br><br><br>
   <section class="news">
+
+
     <div class="news-items">
       <div class="news-item">
-        <div class="image-container"><img src="merch/4.jpg" alt="News Image"></div>
+        <a href="merch/4.html" target="_blank"><div class="image-container"><img src="merch/4.jpg" alt="News Image"></div></a>
         <h3>MSI 2023 DEFY Hoodie</h3>
         <p class="desc" id="outdated">out of stock </p>
-        <span class="product-price">$69.99</span>
-         <button>
+        <span class="product-price">$70.00</span>
+          <button onclick="userCheck(); itemList.push(item3); renderItems();">
             <p>Add to cart</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-          </button>
-        
+          </button>        
       </div>
+
+
       <div class="news-item">
-        <div class="image-container"><img src="merch/5.jpg" alt="News Image"></div>
+        <a href="merch/5.html" target="_blank"><div class="image-container"><img src="merch/5.jpg" alt="News Image"></div></a>
         <h3>Infinity Studio Gwen Statue</h3>
         <p class="desc">Yesterday</p>
-        <span class="product-price">$29.99</span>
-         <button>
+        <span class="product-price">$30.00</span>
+          <button onclick="userCheck(); itemList.push(item4); renderItems();">
             <p>Add to cart</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-          </button>
-        
+          </button>        
       </div>
+
+
       <div class="news-item">
-        <div class="image-container"><img src="merch/6.jpg" alt="News Image"></div>
+        <a href="merch/6.html" target="_blank"><div class="image-container"><img src="merch/6.jpg" alt="News Image"></div></a>
         <h3>True Damage Jackets Are In!</h3>
         <p class="desc">Last week</p>
-        <span class="product-price">$99.99</span>
-         <button>
+        <span class="product-price">$100.00</span>
+          <button onclick="userCheck(); itemList.push(item5); renderItems();">
             <p>Add to cart</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-          </button>
-        
+          </button>        
       </div>
+
+
     </div>
   </section>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-  <script src="scripts.js">
-  </script>
+  
+  <br><br><br><br><br><br><p><br><br><br><br><br>
+    <section id="checking">
+    </section>
+  <br><br><br>
+
+<script>
+    function userCheck(){
+      if(!isLoggedIn){
+        alert("you have to be logged in to perform this action")
+        openLogin()
+      }
+    }
+
+    const cookies = document.cookie.split('; ');
+    let isLoggedIn = false;
+    let username = null;
+    
+    for (let cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if ((value === 'admin' || value === 'not_admin')) {
+            const user = JSON.parse(localStorage.getItem(name))
+            isLoggedIn = true;
+            document.getElementById("checking").innerHTML = `
+                  <h3 class="cart" >Your account balance is: ${user.balance}.00 $</h3>
+                  <h3 class="cart">Cart is filled up with this item: </h3>
+                  <div class="items"></div>
+                  <br><br>
+                  <button onclick="checkAchat()" class="a-button" id="buy">buy!</button>`     
+                  console.log(isLoggedIn)
+            break;
+        }
+    }
+</script>
+
+<script>
+  let itemList = new Array()
+
+  var item0 = {name: "DEFY Scarf", price: 20}
+  var item1 = {name: "ALL ODDS Tee", price: 40}
+  var item2 = {name: "Mageseeker Collectors", price: 100}
+  var item3 = {name: "DEFY Hoodie", price: 70}
+  var item4 = {name: "Gwen Statue", price: 30}
+  var item5 = {name: "True Damage Jackets", price: 100}
+
+  function removeItem(index) {
+        itemList.splice(index, 1);
+        renderItems();
+      }
+
+        const itemsDiv = document.getElementsByClassName("items")[0];
+        
+        console.log(itemsDiv)
+
+      function renderItems() {
+        itemsDiv.innerHTML = "";
+        let index = 0
+        for(let item of itemList) {
+          
+          const itemDiv = document.createElement("div");
+          itemDiv.setAttribute('class', 'card');
+          itemDiv.innerHTML = `
+            <h3>${item.name}</h3><br>
+            <div class="desc">
+              <button class="remove-btn" onclick="removeItem(${index})">X</button>
+              <p>${item.price} $</p>
+            </div>
+          `;
+          itemsDiv.appendChild(itemDiv);
+
+          index ++;
+        };
+      }
+</script>
+
+<script>
+  function checkAchat() {
+    let total = 0
+    const cookies = document.cookie.split('; ');
+    let isLoggedIn = false;
+    let username = null;
+    
+    for (let cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if ((value === 'admin' || value === 'not_admin')) {
+            const user = JSON.parse(localStorage.getItem(name))
+            isLoggedIn = true;
+            var balance = user.balance
+            console.log(balance)
+                for(let item of itemList) {
+                    total += item.price
+                }
+                if(itemList.length === 0) {
+                  alert("cart is empty")
+                } else {
+                    if(total <= balance) {
+                      alert(`achat seccusfully, you can check your item on your email ${user.email}`)
+                      window.location.href = "store.html"
+                      user.balance = balance - total
+                      console.log(user)
+
+                      localStorage.setItem(name, JSON.stringify(user));
+                    } else {
+                      alert("you don't have enough money")
+                    }
+                }
+            break;
+        }
+    }
+  }
 </script>
 
   <footer>
     <p>&copy; 2023 Esports Website</p>
   </footer>
   </section>
+  <script src="scripts.js"></script>
 </body>
 </html>

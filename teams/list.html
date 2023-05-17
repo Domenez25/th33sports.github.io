@@ -28,78 +28,138 @@
             font-weight: 100;
             font-size: 15px;
         }
-        a {
-            color: #5165ff;
-        }
-
-        table {
-            border-collapse: collapse;
-            background-color: #f2f3ff;
-            margin: 0;
-            padding: 0;
-        }
-
-        tr:hover {
-            background: #e6e8ff;
-            outline: none;
-            cursor: pointer;
-        }
 
         td {    
             position: relative;
         }
 
+        tr:hover {
+            outline: none;
+            cursor: pointer;
+        }
+
         h2 {
-            color: #fff;
-            background-color: #44ff;
             padding: 20px;
             margin: 0;
         }
+
     </style>
 </head>
 <body bgcolor="#2c2c2c">
-    <table width="100%">
-        <tr id="theader"><h2 align="center">teams and regions</h2></tr>
+    <table id="teamslist" width="100%">
+        <tr id="theader"><h2 id="tableh" align="center">teams and regions</h2></tr>
         <tr id="t1">
-            <td><a href="team1.html" target="f2"><img src="../icons/team1.png" alt=""></a></td>
-            <td><a href="team1.html" target="f2"><div class="label"><div class="name">First team</div><div class="region">JAPAN</div></div></a></td>
+            <td><a class="team1" onclick="adminCheck()"><img src="../icons/team1.png" alt=""></a></td>
+            <td><a class="team1" onclick="adminCheck()"><div class="label"><div class="name">First team</div><div class="region">JAPAN</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team2.html" target="f2"><img src="../icons/team2.png" alt=""></a></td>
-            <td><a href="team2.html" target="f2"><div class="label"><div class="name">Second team</div><div class="region">CHINA</div></div></a></td>
+            <td><a class="team2" onclick="adminCheck()"><img src="../icons/team2.png" alt=""></a></td>
+            <td><a class="team2" onclick="adminCheck()"><div class="label"><div class="name">Second team</div><div class="region">CHINA</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team3.html" target="f2"><img src="../icons/team3.png" alt=""></a></td>
-            <td><a href="team3.html" target="f2"><div class="label"><div class="name">Third team</div><div class="region">S-KOREA</div></div></a></td>
+            <td><a class="team3" onclick="adminCheck()"><img src="../icons/team3.png" alt=""></a></td>
+            <td><a class="team3" onclick="adminCheck()"><div class="label"><div class="name">Third team</div><div class="region">S-KOREA</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team1.html" target="f2"><img src="../icons/team4.png" alt=""></a></td>
-            <td><a href="team1.html" target="f2"><div class="label"><div class="name">Forth team</div><div class="region">S_KOREA</div></div></a></td>
+            <td><a class="team1" onclick="adminCheck()"><img src="../icons/team4.png" alt=""></a></td>
+            <td><a class="team1" onclick="adminCheck()"><div class="label"><div class="name">Forth team</div><div class="region">S_KOREA</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team2.html" target="f2"><img src="../icons/team5.png" alt=""></a></td>
-            <td><a href="team2.html" target="f2"><div class="label"><div class="name">Last team</div><div class="region">EUROP</div></div></a></td>
+            <td><a class="team2" onclick="adminCheck()"><img src="../icons/team5.png" alt=""></a></td>
+            <td><a class="team2" onclick="adminCheck()"><div class="label"><div class="name">Last team</div><div class="region">EUROP</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team3.html" target="f2"><img src="../icons/team6.png" alt=""></a></td>
-            <td><a href="team3.html" target="f2"><div class="label"><div class="name">Third team</div><div class="region">S-KOREA</div></div></a></td>
+            <td><a class="team3" onclick="adminCheck()"><img src="../icons/team6.png" alt=""></a></td>
+            <td><a class="team3" onclick="adminCheck()"><div class="label"><div class="name">Third team</div><div class="region">S-KOREA</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team1.html" target="f2"><img src="../icons/team1.png" alt=""></a></td>
-            <td><a href="team1.html" target="f2"><div class="label"><div class="name">Forth team</div><div class="region">S_KOREA</div></div></a></td>
+            <td><a class="team1" onclick="adminCheck()"><img src="../icons/team1.png" alt=""></a></td>
+            <td><a class="team1" onclick="adminCheck()"><div class="label"><div class="name">Forth team</div><div class="region">S_KOREA</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team2.html" target="f2"><img src="../icons/team2.png" alt=""></a></td>
-            <td><a href="team2.html" target="f2"><div class="label"><div class="name">Last team</div><div class="region">EUROP</div></div></a></td>
+            <td><a class="team2" onclick="adminCheck()"><img src="../icons/team2.png" alt=""></a></td>
+            <td><a class="team2" onclick="adminCheck()"><div class="label"><div class="name">Last team</div><div class="region">EUROP</div></div></a></td>
         </tr>
         <tr>
-            <td><a href="team3.html" target="f2"><img src="../icons/team3.png" alt=""></a></td>
-            <td><a href="team3.html" target="f2"><div class="label"><div class="name">Third team</div><div class="region">S-KOREA</div></div></a></td>
+            <td><a class="team3" onclick="adminCheck()"><img src="../icons/team3.png" alt=""></a></td>
+            <td><a class="team3" onclick="adminCheck()"><div class="label"><div class="name">Third team</div><div class="region">S-KOREA</div></div></a></td>
         </tr>
     </table>
 
-    <script type="text/javascript">
-       
+    <script>
+        window.onload = function() {
+            const cookies = document.cookie.split('; ');
+            let isLoggedIn = false;
+            let themeUrl
+            for (let cookie of cookies) {
+                const [name, value] = cookie.split('=');
+                if ((value === 'admin' || value === 'not_admin')) {
+                    console.log('cookie : ' + name + '_')
+                    isLoggedIn = true;
+                    themeUrl = JSON.parse(localStorage.getItem(name)).theme
+                    break;
+                }
+            }
+            if (!isLoggedIn) {
+                themeUrl = 'default';
+            }
+            console.log('theme : ' + themeUrl)
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = `/themes/${themeUrl}.css`;
+          
+            document.head.appendChild(link);
+          }
+          </script>
+
+    <script>
+        function adminCheck() {
+            function checkAdminCookie() {
+            var cookies = document.cookie.split("; ");
+            var isAdmin = false;
+            
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].split("=");
+                if (cookie[1] === "admin" || cookie[1] === "not_admin") {
+                    isAdmin = cookie[1];
+                    break;
+                    }
+                }
+                return isAdmin;
+            }
+            var isAdmin = checkAdminCookie();
+            console.log(isAdmin)
+
+            const team1 = document.querySelectorAll('a.team1');
+            const team2 = document.querySelectorAll('a.team2');
+            const team3 = document.querySelectorAll('a.team3');
+            const links = document.querySelectorAll('a')
+            links.forEach(link => {
+                link.target = "f2"
+            });
+
+            if(isAdmin === "admin") {
+                team1.forEach(link => {
+                    link.setAttribute('href', 'admt1.html');
+                });
+                team2.forEach(link => {
+                    link.setAttribute('href', 'admt2.html');
+                });
+                team3.forEach(link => {
+                    link.setAttribute('href', 'admt3.html');
+                });
+            } else {
+                team1.forEach(link => {
+                    link.setAttribute('href', 'team1.html');
+                });
+                team2.forEach(link => {
+                    link.setAttribute('href', 'team2.html');
+                });
+                team3.forEach(link => {
+                    link.setAttribute('href', 'team3.html');
+                });
+            }
+        }
     </script>
 </body>
 </html>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="themes/default.css">
-    <title>Profile Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Edit profile</title>
     <style>
         input {
             height: 2.5em;
@@ -95,6 +95,7 @@
 
 
             // Populate the profile page with the user's data
+            document.querySelector('img').src = user.pfp
             document.getElementById('username').textContent = username;
             document.getElementById('fname').placeholder = user.firstName;
             document.getElementById('lname').placeholder = user.lastName;
@@ -144,6 +145,7 @@
                 }
             });
   </script>
+  <script src="navfooter.js"></script>
 
   </body>
 </html>

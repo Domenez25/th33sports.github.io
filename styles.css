@@ -1,191 +1,214 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2C2C2C;
-    color: white;
-    padding: 10px;
-    position: fixed;
-    z-index: 20000;
-    width: 100%;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  #pagecontent {
-    padding-top: 40px;
-  }
-  
-  nav ul {
-    display: flex;
-    list-style: none;
-  }
-  
-  nav ul li {
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .account {
-    display: flex;
-  }
-  
-  .account a {
-    color: white;
-    margin-left: 20px;
-  }
-  
-  header {
-    text-align: center;
-    padding: 50px 0;
-    background-color: #F2F2F2;
-  }
-  
-  header h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-  }
-  
-  header p {
-    font-size: 20px;
-  }
-  
-  .news, .updates {
-    padding: 50px;
-    background-color: #FFFFFF;
-  }
-  
-  h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .news-items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .news-item {
-    width: 30%;
-    margin-bottom: 30px;
-  }
-  
-  .news-item img {
-    width: 100%;
-  }
-  
-  .news-item h3 {
-    font-size: 24px;
-    margin: 10px 0;
-  }
-  
-  .news-item p {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  #add , .news-item a {
-    cursor: pointer;
-    display: inline-block;
-    background-color: #2C2C2C;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    border: solid 1px #2c2c2c
-  }
-  
-  #add:hover , .news-item a:hover {
-    background-color: #f2f2f2;
-    color: #2C2C2C;
-  }
-    
-  footer {
-    background-color: #2C2C2C;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Page header */
-  header {
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 3rem;
-  }
-  
-  /* Store items */
-  .item-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .item-card {
-    background-color: #f2f2f2;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    margin: 10px;
-    width: calc(33.33% - 20px);
-    padding: 10px;
-    text-align: center;
-  }
-  
-  .item-card img {
-    max-width: 100%;
-    height: auto;
-    margin: 10px 0;
-  }
-  
-  .item-card h2 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  
-  .item-card p {
-    margin: 10px 0;
-    font-size: 1.2rem;
-  }
-  
-  .item-card button {
-    background-color: #333;
-    border: none;
-    color: #fff;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .item-card button:hover {
-    background-color: #555;
-  }
+body {
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  z-index: 20000;
+  width: 100%;
+}
+
+#pagecontent {
+  padding-top: 40px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+.account {
+  display: flex;
+}
+
+.account a {
+  color: white;
+  margin-left: 20px;
+}
+
+header {
+  text-align: center;
+  padding: 50px 0;
+}
+
+header h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+header p {
+  font-size: 20px;
+}
+
+.news, .updates {
+  padding: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.news-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.news-item {
+  width: 30%;
+  margin-bottom: 30px;
+}
+
+.news-item img {
+  width: 100%;
+}
+
+.news-item h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.news-item p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#add , .news-item .a-button , input[type="submit"] {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+nav a {
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Page header */
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+/* Store items */
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-card {
+  border-radius: 5px;
+  margin: 10px;
+  width: calc(33.33% - 20px);
+  padding: 10px;
+  text-align: center;
+}
+
+.item-card img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.item-card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.item-card p {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.item-card button {
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.image-container {
+  width: 100%;
+  height: 160%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.1);
+}
+
+table {
+border-collapse: collapse;
+}
+
+td, th {
+padding: 10px;
+width: 200px;
+}
+
+#content {
+width: 700px;
+}
+
+#add {
+margin: 2em;
+}
+
+select {
+	display: block;
+	margin: 10px auto;
+	padding: 10px;
+	width: auto;
+	border: none;
+	border-radius: 5px;
+	background-color: #f4f4f4;
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+  border: 1px solid #333;
+}

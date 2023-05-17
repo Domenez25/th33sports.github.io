@@ -4,65 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Esport</title>
-  <link rel="stylesheet" href="themes/default.css">
-  <style>
-    table {
-      border-collapse: collapse;
-    }
-
-    td, th {
-      padding: 10px;
-      width: 200px;
-    }
-
-    #content {
-      width: 700px;
-    }
-
-    #add {
-      margin: 2em;
-    }
-
-    .image-container {
-        width: 100%;
-        height: 200%;
-        overflow: hidden;
-        position: relative;
-    }
-    
-    .image-container img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        transition: transform 0.3s ease;
-    }
-    
-    .image-container:hover img {
-        transform: scale(1.1);
-    }
-
-  </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="Home.html">Home</a></li>
-      <li><a href="schedule.html">Schedule</a></li>
-      <li><a href="Teams.html">Teams</a></li>
-      <li><a href="store.html">Store</a></li>
-    </ul>
-    <div class="account">
-        <a href="#" onclick="loginButton()">Account/Login</a>
-    </div>
-  </nav>
+  <nav></nav>
   <section id="pagecontent">
     <header>
       <h1>Esports Website</h1>
       <p>Stay up-to-date with the latest news and events in the world of esports!</p>
     </header>
-    <section class="news">
+    <section class="news"> 
       <h2>Latest News</h2>
       <div class="news-items">
         <div class="news-item">
@@ -93,12 +44,14 @@
       <h2>Updates from admins</h2>
       <div class="update-list" align="center">
         <table border="3" align="center" id="maTable">
-          <tr>
+          
+          <tr><thead>
             <th id="source">source</th>
             <th id="content">content</th>
             <th id="date">set date</th>
             <th id="expiry">valide untill</th>
-          </tr>
+          </thead></tr>
+        
         </table>
       </div>
       <div id="add-button" align="center"></div>
@@ -107,8 +60,6 @@
       
     </section>
 
-      <script src="scripts.js">
-      </script>
 
       <script>
           const cookies = document.cookie.split("; ");
@@ -120,7 +71,7 @@
           }
 
           function addPage() {
-              var url = "adding.html";
+              var url = "/popups/adding.html";
               var width = 400;
               var height = 430;
               var left = (window.innerWidth - width) / 2;
@@ -156,7 +107,7 @@
             
             var d = new Date()
             var currentDate = new Date()
-            d.setTime(d.getTime() + expiration * 1000);
+            d.setTime(d.getTime() + expiration * 60000);
             var cookieName = "cookie_" + counter;
             document.cookie = `${cookieName} = ${designation} + ${currentDate.toLocaleTimeString()} + ${d.toLocaleTimeString()} + ${username}; expires = ${d.toUTCString()}`
 
@@ -243,13 +194,15 @@
           }
         }
 
-window.onload = checkCookies; 
+window.onload = checkCookies(); 
         
       </script>
-
+      
     <footer>
-      <p>&copy; 2023 Esports Website</p>
     </footer>
   </section>
-</body>
+  
+  <script src="scripts.js">
+  </script>
+  </body>
 </html>

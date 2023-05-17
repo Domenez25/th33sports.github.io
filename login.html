@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login window</title>
 
       <style type="text/css">
 
@@ -13,7 +13,7 @@
             outline: none;
             border-radius: 5px;
             padding: 1em;
-            background-color: rgb(220, 243, 255);
+            background-color: #f2f2f2;
             box-shadow: inset 2px 5px 10px rgba(0, 77, 141, 0.2);
             transition: 300ms ease-in-out;
             }
@@ -60,7 +60,7 @@
             #content {
               max-width: 500px;
               padding: 20px 50px;
-              background-color: #f2f2f2;    
+              background-color:  rgb(220, 243, 255);  
               margin: 20px;
               border-radius: 10px;
             }
@@ -70,7 +70,7 @@
 <body align="center">
     
     <div id="content">
-    <h1>sign in to<br> your account!</h1>
+    <h1>Log in to<br> your account!</h1>
     
     <form action="" method="post">
 
@@ -83,7 +83,9 @@
     </form>
 
     <div id="message"><br></div>
-    <br>
+    <p><a onclick="passwordReset()" href="#">forgot password?</a></p>
+    <p>don't have an account? <a href="/popups/signup.html">sign up</a></p>
+
   </div>
 
     <script>
@@ -100,9 +102,9 @@
       
             const username = checkLogin();
             const user = JSON.parse(localStorage.getItem(username));
-
+                console.log(username)
             if(typeof username === "string") {
-                  window.location.href = "profile.html"
+                  window.location.href = "/profile.html"
                 }
 
       const loginButton = document.getElementById('login-button');
@@ -129,7 +131,7 @@
             } else {
               document.cookie = `${username}=not_admin; expires=${expirationDate.toUTCString()}`;
             }
-            window.opener.location.href = 'Home.html';
+            window.opener.location.href = '/profile.html';
             window.close();
 
           } else {
@@ -148,6 +150,40 @@
       function resetPass() {
         document.getElementById('message').innerHTML = '<br>';
         document.getElementById('password').value = '';
+      }
+    </script>
+
+    <script>
+      function passwordReset() {
+        const username = document.getElementById('username').value;
+        const message = document.getElementById('message');
+        if (localStorage.getItem(username)) {
+    // Generate a unique key for the message in local storage
+    let counter = 0;
+    let messageKey = `request_${counter}`;
+    while (localStorage.getItem(messageKey) !== null) {
+      counter++;
+      messageKey = `request_${counter}`;
+    }
+
+    // Get the current date and time
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getHours()}:${currentDate.getMinutes()} ${currentDate.getDate()}-${currentDate.getMonth() + 1}-${currentDate.getFullYear()}`;
+    const messagesent = "I forgot my password can you reset it please?"
+    // Create an array with the message details
+    const messageData = [username, messagesent, formattedDate];
+    message.innerHTML = `password reset request sent to administration pls wait until an admin responds`
+
+    // Store the message in local storage
+    localStorage.setItem(messageKey, JSON.stringify(messageData));
+
+    // Clear the form input
+    messageInput.value = "";
+
+        
+        } else {
+            message.innerHTML = `Username not found, please <a href="#" onclick="resetForm()">try again</a>.`;
+            }
       }
     </script>
 

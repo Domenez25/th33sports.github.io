@@ -4,20 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="themes/default.css">
+    <link rel="stylesheet" href="/styles.css">
     <title>Profile Page</title>
   </head>
   <body>
     <nav>
-        <ul>
-          <li><a href="Home.html">Home</a></li>
-          <li><a href="schedule.html">Schedule</a></li>
-          <li><a href="Teams.html">Teams</a></li>
-          <li><a href="store.html">Store</a></li>
-        </ul>
-        <div class="account">
-            <a href="#" onclick="loginButton()">Account/Login</a>
-        </div>
         </nav>
         <section id="pagecontent">
         <header>  
@@ -36,7 +27,17 @@
                         <p><strong>email:</strong><i> <u><span id="email"></span></u></i></p>
                       </div> 
                     </div>
-                    <br><br>
+                    <br>
+                    <div align="center" style="display: flex; margin-left: 500px;" id="theme">
+                    <p><strong>change theme:</strong></p>
+                    <select style="width: 150px; margin: 0 20px;" id="slct" name="theme">
+                      <option value="default">default</option>
+                      <option value="purple">purple</option>
+                      <option value="orange">orange</option>
+                      <option value="green">Diamond</option>
+                    </select>
+                    <button style="width: 100px;" id="sub">submit</button></div>
+                    <br>
                     <div id="profile-buttons" align="center">
                         <a href="edit.html"><button id="edit-profile-button">Edit Profile</button></a>
                         <a href="password.html"><button id="change-password-button">Change Password</button></a>
@@ -74,7 +75,7 @@
 
                 if(username === null) {
                   alert("sorry, you have to be logged in to acces this page!")
-                  window.location.href = "home.html"
+                  window.history.back();
                 }
 
 
@@ -87,6 +88,19 @@
             document.getElementById('user-type').textContent = user.admin ? 'Admin' : 'Visitor';
             document.getElementById('email').textContent = user.email;
 
+
+
+            const themebutton = document.getElementById('sub')
+            const selected = document.getElementById('slct')
+            themebutton.addEventListener('click', (event) => {
+              event.preventDefault();
+              const theme = selected.value
+              user.theme = theme
+              localStorage.setItem(username, JSON.stringify(user))
+              location.reload()
+            })
+
     </script>
+    <script src="scripts.js"></script>
   </body>
 </html>

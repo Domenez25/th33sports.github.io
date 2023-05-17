@@ -1,26 +1,31 @@
+  body {
+    background-color: #050017;
+    color: #fff;
+  }
+
 
   nav {
-    background-color: #2C2C2C;
+    background-color: #3500d3 ;
     color: white;
   }
 
   header {
-    background-color: #F2F2F2;
+    background-color: #5053ff;
   }
 
   #add , .news-item .a-button , .article-list .a-button , input[type="submit"]  {
-    background-color: #2C2C2C;
+    background-color: #f64c72 ;
     color: white;
-    border: solid 1px #2c2c2c
+    border: solid 1px #f64c72 
   }
   
   #add:hover , .news-item .a-button:hover , .article-list .a-button:hover  , input[type="submit"]:hover {
-    background-color: #f2f2f2;
-    color: #2C2C2C;
+    background-color: #050017;
+    color: #f64c72  ;
   }
     
   footer {
-    background-color: #2C2C2C;
+    background-color: #3500d3 ;
     color: white;
   }
   
@@ -29,20 +34,24 @@
   }
 
   .item-card {
-    background-color: #f2f2f2;
+    background-color: #5053ff;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   }
   
   .item-card .a-button {
-    background-color: #2C2C2C;
-    color: #fff;
+    background-color: #5053ff;
+    color: #333;
   }
   
   .item-card .a-button:hover {
     background-color: #555;
   }
 
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
 
   th, td {
       padding: 1em;
@@ -50,10 +59,11 @@
   }
   thead {
       color: white;
-      background-color: #2C2C2C;
+      background-color: #5053ff;
   }
   tbody { 
       background-color: #eee;
+      color: #000;
   }
 
   #teamslist a {
@@ -66,7 +76,7 @@
 
   #tableh {
       color: #fff;
-      background-color: #2C2C2C;
+      background-color: #333;
   }
           
   table {
@@ -79,26 +89,22 @@
       padding-right: 2em;
   }
 
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
     
   button , .buttons{
     padding: 0.5em;
     border-radius: 5px;
     border: none;
-    background-color: #2c2c2c;
+    background-color: #3500d3 ;
     color: white;
     cursor: pointer;
   }
   
   button:hover , .buttons:hover {
-    background-color: #333;
+    background-color: #4c1bae;
   }
   
   button:active , .buttons:active {
-    background-color: #555;
+    background-color: #5053ff;
   }
   
   #clear {
@@ -109,4 +115,10 @@
 
   #clear:hover {
     background-color: #eee;
+  }
+
+  .card , .removebutton {
+    background-color: #eee;
+    border: 1px solid #333;
+    color: #111;
   }

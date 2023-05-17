@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../themes/default.css">
+    <title>PSG</title>
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="teams.css">
 
 </head>
@@ -19,7 +19,7 @@
         </div>
     </nav>
     <section id="pagecontent">
-    <p>PSG Talon is a professional League of Legends team formed from a partnership between PSG Esports and Talon Esports. Talon Esports' original League of Legends team was founded on 18 December 2019</p>
+    <p id="bio"></p>
     <h2>team members:</h2>
 
 <div align="center" class="borderdiv">
@@ -34,44 +34,114 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
-        <tr>
-            <td>playerxxx</td>
-            <td>bouzara zakaria</td>
-            <td>algerian</td>
-            <td>toplaner</td>
-            <td>22-10-2026</td>
-        </tr>
+            <tr>
+                <td id="user-t3-p1"></td>
+                <td id="name-t3-p1"></td>
+                <td id="nati-t3-p1"></td>
+                <td id="role-t3-p1"></td>
+                <td id="date-t3-p1"></td>
+            </tr>
+            <tr>
+                <td id="user-t3-p2"></td>
+                <td id="name-t3-p2"></td>
+                <td id="nati-t3-p2"></td>
+                <td id="role-t3-p2"></td>
+                <td id="date-t3-p2"></td>
+            </tr>
+            <tr>
+                <td id="user-t3-p3"></td>
+                <td id="name-t3-p3"></td>
+                <td id="nati-t3-p3"></td>
+                <td id="role-t3-p3"></td>
+                <td id="date-t3-p3"></td>
+            </tr>
+            <tr>
+                <td id="user-t3-p4"></td>
+                <td id="name-t3-p4"></td>
+                <td id="nati-t3-p4"></td>
+                <td id="role-t3-p4"></td>
+                <td id="date-t3-p4"></td>
+            </tr>
+            <tr>
+                <td id="user-t3-p5"></td>
+                <td id="name-t3-p5"></td>
+                <td id="nati-t3-p5"></td>
+                <td id="role-t3-p5"></td>
+                <td id="date-t3-p5"></td>
+            </tr>
         </tbody>
     </table>
     </div>
 </section>
+<script>
+    window.onload = function() {
+        const cookies = document.cookie.split('; ');
+        let isLoggedIn = false;
+        let themeUrl
+        for (let cookie of cookies) {
+            const [name, value] = cookie.split('=');
+            if ((value === 'admin' || value === 'not_admin')) {
+                console.log('cookie : ' + name + '_')
+                isLoggedIn = true;
+                themeUrl = JSON.parse(localStorage.getItem(name)).theme
+                break;
+            }
+        }
+        if (!isLoggedIn) {
+            themeUrl = 'default';
+        }
+        console.log('theme : ' + themeUrl)
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `/themes/${themeUrl}.css`;
+      
+        document.head.appendChild(link);
+      }
+      </script>
+
+<script>
+    fetch('teams.json')
+.then(response => response.json())
+.then(data => {
+    // first team
+        const team3 = data.teams.team3;
+
+        document.getElementById("bio").textContent = team3.bio
+
+        document.getElementById('user-t3-p1').textContent = team3.player1.username;
+        document.getElementById('name-t3-p1').textContent = team3.player1.fullname;
+        document.getElementById('nati-t3-p1').textContent = team3.player1.nationality;
+        document.getElementById('role-t3-p1').textContent = team3.player1.role;
+        document.getElementById('date-t3-p1').textContent = team3.player1.contract;
+        
+        document.getElementById('user-t3-p2').textContent = team3.player2.username;
+        document.getElementById('name-t3-p2').textContent = team3.player2.fullname;
+        document.getElementById('nati-t3-p2').textContent = team3.player2.nationality;
+        document.getElementById('role-t3-p2').textContent = team3.player2.role;
+        document.getElementById('date-t3-p2').textContent = team3.player2.contract;
+        
+        document.getElementById('user-t3-p3').textContent = team3.player3.username;
+        document.getElementById('name-t3-p3').textContent = team3.player3.fullname;
+        document.getElementById('nati-t3-p3').textContent = team3.player3.nationality;
+        document.getElementById('role-t3-p3').textContent = team3.player3.role;
+        document.getElementById('date-t3-p3').textContent = team3.player3.contract;
+        
+        document.getElementById('user-t3-p4').textContent = team3.player4.username;
+        document.getElementById('name-t3-p4').textContent = team3.player4.fullname;
+        document.getElementById('nati-t3-p4').textContent = team3.player4.nationality;
+        document.getElementById('role-t3-p4').textContent = team3.player4.role;
+        document.getElementById('date-t3-p4').textContent = team3.player4.contract;
+        
+        document.getElementById('user-t3-p5').textContent = team3.player5.username;
+        document.getElementById('name-t3-p5').textContent = team3.player5.fullname;
+        document.getElementById('nati-t3-p5').textContent = team3.player5.nationality;
+        document.getElementById('role-t3-p5').textContent = team3.player5.role;
+        document.getElementById('date-t3-p5').textContent = team3.player5.contract;
+
+})
+.catch(error => {
+  console.error('Error fetching teams:', error);
+});
+</script>
 </body>
 </html>
